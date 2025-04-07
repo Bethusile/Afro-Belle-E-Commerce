@@ -79,7 +79,7 @@ Static files (CSS, JavaScript, images, frontend libraries)
 
 Data/
 
-Likely contains DbContext and database initialization classes.
+Contains DbContext and database initialization classes.
 
 Helpers/
 
