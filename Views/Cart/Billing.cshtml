@@ -1,0 +1,155 @@
+﻿@model AB.ViewModels.CheckoutViewModel
+
+
+<div class="p-5">
+    <div class="mx-auto p-3 bg-light rounded border" style="width:400px;">
+        <h2 class="text-center mb-4">Billing Details</h2>
+
+        <!-- Client Details -->
+        <h4>Client Details</h4>
+        <div class="form-group mb-3">
+            <label asp-for="CustomerName" class="form-label">Name</label>
+            <input asp-for="CustomerName" class="form-control" required placeholder="Enter your full name" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" type="email" class="form-control" required placeholder="Enter your email address" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Phone" class="form-label">Phone</label>
+            <input asp-for="Phone" type="tel" class="form-control" required placeholder="Enter your phone number" />
+        </div>
+
+        <!-- Address -->
+        <h4>Delivery Address</h4>
+        <div class="form-group mb-3">
+            <input asp-for="StreetAddress" class="form-control" required placeholder="Street Address" />
+        </div>
+        <div class="form-group mb-3">
+            <input asp-for="VillageOrSuburb" class="form-control" required placeholder="Village/Suburb" />
+        </div>
+        <div class="form-group mb-3">
+            <input asp-for="City" class="form-control" required placeholder="City" />
+        </div>
+        <div class="form-group mb-3">
+            <input asp-for="AreaCode" class="form-control" required placeholder="Postal Code" />
+        </div>
+
+
+     
+
+<div class="container mt-5">
+    <h2>Billing</h2>
+    <div class="border p-3 rounded">
+        <h4>Order Summary</h4>
+                <p><strong>Cart Total:</strong> R <span id="cartTotal">@Model.TotalAmount</span></p>
+        
+        <div class="form-group">
+            <label for="shippingOption">Choose Shipping Option:</label>
+            <select id="shippingOption" class="form-control">
+                <option value="0" data-cost="0" selected>-- Select Shipping Option --</option>
+                @foreach (var option in Model.ShippingOptions)
+                {
+                    <option value="@option.Id" data-cost="@option.Cost">@option.Name (R @option.Cost)</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="discountCode">Enter Discount Code:</label>
+            <input type="text" id="discountCode" class="form-control" placeholder="Discount Code" />
+            <button type="button" id="applyDiscount" class="btn btn-primary mt-2">Apply Discount</button>
+        </div>
+
+        <p class="mt-3"><strong>Shipping:</strong> R <span id="shippingCost">0.00</span></p>
+        <p><strong>Discount:</strong> R <span id="discount">0.00</span></p>
+        <p class="h4"><strong>Total:</strong> R <span id="totalAmount">@Model.TotalAmount</span></p>
+
+                <a asp-action="Checkout" class="btn btn-success btn-lg">checkout now</a>
+    </div>
+</div>
+    </div>
+</div>
+@* //added 2 end tags here *@
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let cartTotal = parseFloat(document.getElementById("cartTotal").innerText);
+            let shippingCost = 0;
+            let discount = 0;
+
+            const shippingOption = document.getElementById("shippingOption");
+            const shippingCostElement = document.getElementById("shippingCost");
+            const discountElement = document.getElementById("discount");
+            const totalAmountElement = document.getElementById("totalAmount");
+
+            // Update total amount
+            function updateTotal() {
+                const total = cartTotal + shippingCost - discount;
+                totalAmountElement.innerText = total.toFixed(2);
+            }
+
+            // Handle shipping option change
+            shippingOption.addEventListener("change", function () {
+                shippingCost = parseFloat(this.options[this.selectedIndex].dataset.cost) || 0;
+                shippingCostElement.innerText = shippingCost.toFixed(2);
+                updateTotal();
+            });
+
+            // Handle discount application
+            document.getElementById("applyDiscount").addEventListener("click", function () {
+                const discountCode = document.getElementById("discountCode").value.trim();
+                
+                fetch(`/Cart/ValidateDiscountCode?code=${discountCode}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            discount = data.amount;
+                            discountElement.innerText = discount.toFixed(2);
+                        } else {
+                            alert("Invalid discount code.");
+                        }
+                        updateTotal();
+                    })
+                    .catch(err => console.error(err));
+            });
+
+            updateTotal();
+        });
+
+        // function placeOrder() {
+        //     alert("Order placed successfully!");
+        //     // Implement the order placement logic here.
+        // }
+                // Update total amount
+                function updateTotal() {
+                    const total = cartTotal + shippingCost - discount;
+                    totalAmountElement.innerText = total.toFixed(2);
+
+                    // Send updated total to server
+                    fetch('/Cart/UpdateTotal', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            totalAmount: total.toFixed(2),
+                            shippingCost: shippingCost,
+                            discount: discount
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log("Total updated successfully.");
+                            } else {
+                                console.error("Error updating total.");
+                            }
+                        })
+                        .catch(err => console.error('Error:', err));
+                }
+
+    </script>
+}
+

@@ -1,0 +1,112 @@
+﻿@model AB.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details - " + Model.Name;
+}
+@* 
+<!-- Trigger Button: Open the Modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal">
+    View Product Details
+</button> *@
+
+<!-- Product Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="productModalLabel">@Model.Name</h5>
+                <button type="button" class="btn-close" aria-label="Close" onclick="returnToPreviousPage()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Product Image Carousel -->
+                    <div class="col-md-6">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @foreach (var imageUrl in Model.ImageUrl?.Split(',') ?? Enumerable.Empty<string>())
+                                {
+                                    <div class="carousel-item @(imageUrl == Model.ImageUrl.Split(',')[0] ? "active" : "")">
+                                        <img src="~/images/@imageUrl" class="d-block w-100" alt="@Model.Name">
+                                    </div>
+                                }
+
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Information and Add to Cart Form -->
+                    <div class="col-md-6">
+                        <h3>@Model.Name</h3>
+                        <p>@Model.Description</p>
+                        <p><strong>Price: </strong>R @Model.Price</p>
+
+                        <!-- Size and Color Selection Form -->
+                        <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                            <input type="hidden" name="productId" value="@Model.Id" />
+
+                            <!-- Size Selection -->
+                            <div class="mb-3">
+                                <label for="size" class="form-label">Size:</label>
+                                <select id="size" name="size" class="form-select">
+                                    @foreach (var size in Model.Sizes?.Split(',') ?? Enumerable.Empty<string>())
+                                    {
+                                        <option value="@size">@size</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <!-- Color Selection -->
+                            <div class="mb-3">
+                                <label for="color" class="form-label">Color:</label>
+                                <select id="color" name="color" class="form-select">
+                                    @foreach (var color in Model.Colors?.Split(',') ?? Enumerable.Empty<string>())
+                                    {
+                                        <option value="@color">@color</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <!-- Add to Cart Button -->
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="returnToPreviousPage()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Auto-trigger Modal Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = new bootstrap.Modal(document.getElementById('productModal'));
+        modal.show();
+    });
+    function returnToPreviousPage() {
+        // Check if there's a history entry to go back to
+        if (document.referrer) {
+            window.history.back();
+        } else {
+            // If no referrer is available, redirect to a default page
+            window.location.href = '/';
+        }
+    }
+
+    // Automatically trigger the modal when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        var modal = new bootstrap.Modal(document.getElementById('productModal'));
+        modal.show();
+    });
+</script>
+

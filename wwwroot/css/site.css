@@ -1,0 +1,166 @@
+/* Style for each card */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+}
+
+/* Ensure images scale properly */
+.product-image {
+    transition: transform 0.3s ease;
+    object-fit: cover;
+    height: 250px; /* You can adjust this */
+    width: 100%;
+}
+
+    /* Hover effect: increase image size */
+    .product-image:hover {
+        transform: scale(1.1);
+        height: 280px; /* You can adjust this */
+        width: 100%;
+    }
+
+/* Hover effect: slightly lift the entire card */
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Text style adjustments */
+.product-title {
+    font-size: 1.2rem; /* Adjust size as needed */
+    font-weight: bold;
+}
+
+.product-description {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.product-price {
+    font-size: 1rem;
+    color: #000;
+}
+
+/* Ensure uniform height for the cards */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+
+/* Make images and text respond to smaller screen sizes */
+@media (max-width: 767px) {
+    .product-card {
+        height: auto;
+    }
+
+    .product-title {
+        font-size: 1rem;
+    }
+
+    .product-description {
+        font-size: 0.8rem;
+    }
+
+    .product-price {
+        font-size: 0.9rem;
+    }
+}
+/* Ensure card layout and hover effects */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+.product-image {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.1);
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.product-description {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.product-price {
+    font-size: 1rem;
+    color: #000;
+}
+
+.form-check-label {
+    font-size: 0.9rem;
+}
+
+/* Add-to-cart icon styles */
+.add-to-cart-icon {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+    .add-to-cart-icon:hover {
+        transform: scale(1.2);
+    }
+.product-image {
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover;
+}
+
+.carousel-inner {
+    border-radius: 10px; /* Rounded edges */
+}
+.back-img {
+    height: 30vh;
+    object-fit: cover;
+    width: 100%;
+}
+#newarrivals-section {
+    background-color: beige; /* Optional background for better visibility */
+    padding: 2rem 0;
+}
+
+.product-card {
+    max-width: 90%; /* Restrict product card size */
+    margin: auto; /* Center card horizontally */
+}
+/*********************sticky icon**************************/
+.sticky-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+    .sticky-icon a img {
+        border-radius: 50%; /* Optional: Make it circular for better aesthetics */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+        transition: transform 0.3s; /* Optional: Add a hover effect */
+    }
+
+        .sticky-icon a img:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }

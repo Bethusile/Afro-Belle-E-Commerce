@@ -1,0 +1,78 @@
+﻿@model AB.ViewModels.CheckoutViewModel
+@{
+    ViewData["NoContainer"] = true;
+}
+
+<div class="p-5" style="background-color:#08618d;">
+    <div class="mx-auto p-3 bg-light rounded border" style="width:420px;">
+        <h2 class="text-center mb-5">Complete Your Order</h2>
+
+        
+
+        <!-- Total Amount -->
+        <div class="row mb-3">
+            <div class="col-5 fw-bold">Total Amount:</div>
+            <div class="col-7">
+                <span id="totalAmount" data-value="@Model.TotalAmount">R @Model.TotalAmount</span>
+            </div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="row mb-3">
+            <div class="col-5 fw-bold">Quantity:</div>
+            <div class="col-7">@Model.Quantity</div>
+        </div>
+
+        <br />
+
+        <!-- Notifications -->
+        <div id="notification-container" class="mb-3"></div>
+
+        <!-- PayPal Buttons -->
+        <div id="paypal-button-container"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://www.paypal.com/sdk/js?client-id=ATr0Zckn8Ctk-lfpdLgMLoud6qA9K9-fI8M5QwrH9n0yrlGtA7L14qpeJ8PRD7kX5BxyOM8K7bSgtSgT&currency=ZAR"></script>
+    <script>
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                return fetch('/api/PayPal/CreateOrder', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        totalAmount: document.getElementById('totalAmount').getAttribute('data-value')
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => data.id); // Return PayPal order ID
+            },
+            onApprove: function (data, actions) {
+                return fetch('/api/PayPal/CaptureOrder', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ orderId: data.orderID })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = '/Cart/OrderConfirmation?orderId=' + data.orderID;
+                        } else {
+                            document.getElementById('notification-container').innerHTML =
+                                '<div class="alert alert-danger">Payment failed. Please try again.</div>';
+                        }
+                    });
+            },
+            onError: function (err) {
+                console.error('PayPal Checkout Error:', err);
+                document.getElementById('notification-container').innerHTML =
+                    '<div class="alert alert-danger">An error occurred during the payment process.</div>';
+            }
+        }).render('#paypal-button-container');
+    </script>
+}

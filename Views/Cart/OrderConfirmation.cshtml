@@ -1,0 +1,16 @@
+﻿@model AB.Models.Order
+
+<div class="container mt-5">
+    <h2>Order Confirmation</h2>
+    <p>Thank you for your order, @Model.CustomerName!</p>
+    <h4>Order Summary</h4>
+    <ul>
+        <li><strong>Total Amount:</strong> @Model.TotalAmount:C</li>
+        <li><strong>Shipping Fee:</strong> @Model.ShippingFee:C</li>
+        <li><strong>Order Date:</strong> @Model.OrderDate.ToLocalTime().ToString("f")</li>
+        <li><strong>Delivery Address:</strong> @Model.StreetAddress, @Model.VillageOrSuburb, @Model.City, @Model.AreaCode</li>
+    </ul>
+    <p>Your order is currently <strong>@Model.Status</strong>.</p>
+</div>
+
+
