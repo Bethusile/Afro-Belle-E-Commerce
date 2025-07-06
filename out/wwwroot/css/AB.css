@@ -1,0 +1,149 @@
+﻿/* Announcement bar styling */
+.announcement-bar {
+    font-size: 0.9rem;
+    background-color: #007bff; /* Changed to blue */
+    color: #fff;
+}
+
+/* Sticky Navbar Styling */
+.ab-header {
+    z-index: 1030;
+}
+
+/* Secondary Navbar Styling */
+.secondary-navbar {
+    padding: 0.5rem 0;
+    background-color: burlywood;
+}
+
+    .secondary-navbar .nav-link {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #007bff; /* Changed to blue */
+    }
+
+        .secondary-navbar .nav-link:hover {
+            color: #0056b3; /* Darker blue on hover */
+            text-decoration: underline;
+        }
+
+/* Navbar Icon and Link Styling */
+.nav-link i {
+    font-size: 1.2rem;
+    color: #007bff; /* Changed to blue */
+}
+
+    .nav-link i:hover {
+        color: #0056b3; /* Darker blue on hover */
+    }
+
+/* Logo Styling */
+.navbar-brand img {
+    max-height: 60px;
+}
+
+/* Footer Styling */
+.footer {
+    font-size: 0.9rem;
+}
+
+.container {
+    max-width: 1200px;
+}
+/* Centered Afro Belle Link Styling */
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #007bff; /* Blue color */
+    text-decoration: none;
+}
+
+    .navbar-brand:hover {
+        color: #0056b3; /* Darker blue on hover */
+    }
+
+/* Link and Icon Alignment */
+.navbar-nav .nav-item .nav-link {
+    font-size: 1rem;
+    color: #007bff;
+}
+
+    .navbar-nav .nav-item .nav-link:hover {
+        color: #0056b3;
+    }
+
+.nav-link i {
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+    .nav-link i:hover {
+        color: #0056b3;
+    }
+/* Afro Belle Center Heading */
+
+.navbar-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    color: #007bff; /* Blue color */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.badge {
+    font-size: 0.75rem; /* Adjust badge text size */
+    height: 1rem;
+    width: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Ensure the badge stays circular */
+}
+/***************FOOTER*******************************/
+.footer {
+    background-color: #222;
+    color: #aaa;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: left;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+    .footer-section h4 {
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: lightgrey;
+    }
+
+    .footer-section p {
+        margin: 0;
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+    .footer-section a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .footer-section a:hover {
+            text-decoration: underline;
+        }

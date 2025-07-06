@@ -2,16 +2,22 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
-# Copy everything
+# Copy everything into the container
 COPY . ./
 
-# Publish the app to the /out directory
-RUN dotnet publish -c Release -o /out
+# Restore dependencies
+RUN dotnet restore AB.csproj
 
-# Use the ASP.NET runtime image to run the app
+# Publish the app
+RUN dotnet publish AB.csproj -c Release -o /out
+
+# Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /out ./
 
-# Run the app
-ENTRYPOINT ["dotnet", "AfroBelle.dll"]
+# Expose port
+EXPOSE 80
+
+# Start the app
+ENTRYPOINT ["dotnet", "AB.dll"]
