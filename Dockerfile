@@ -1,23 +1,15 @@
-# Use the official .NET SDK image to build the app
+# Build Stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-# Copy everything into the container
-COPY . ./
-
-# Restore dependencies
+# Copy everything and restore
+COPY . .
 RUN dotnet restore AB.csproj
+RUN dotnet publish AB.csproj -c Release -o /app/out
 
-# Publish the app
-RUN dotnet publish AB.csproj -c Release -o /out
-
-# Build runtime image
+# Runtime Stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from=build /out ./
-
-# Expose port
+COPY --from=build /app/out ./
 EXPOSE 80
-
-# Start the app
 ENTRYPOINT ["dotnet", "AB.dll"]
