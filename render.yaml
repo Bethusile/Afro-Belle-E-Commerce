@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: afro-belle-ecommerce
+    runtime: docker
+    plan: free
+    region: oregon
+    repo: https://github.com/Bethusile/Afro-Belle-E-Commerce
+    branch: main
+    dockerfilePath: Dockerfile
+
