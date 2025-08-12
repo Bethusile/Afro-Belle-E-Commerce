@@ -52,9 +52,6 @@
                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
                         <i class="bi bi-house-fill text-primary"></i>
                     </a>
-                    <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Search">
-                        <i class="bi bi-search text-primary"></i>
-                    </a>
                     <!-- Cart Icon with Tooltip and Item Count -->
                     <div class="position-relative d-inline-block">
                         <!-- Cart Icon -->
@@ -100,18 +97,9 @@
         </nav>
     </header>
 
-    @* @if (ViewData["NoContainer"] == null)
-    { *@
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-    @* }
-    else
-    {
+    <main role="main" class="pb-3 flex-grow-1 mx-4">
         @RenderBody()
-    } *@
+    </main>
 
 
     <div class="lead mb-4 text-center sticky-icon">

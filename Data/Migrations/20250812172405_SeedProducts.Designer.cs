@@ -4,6 +4,7 @@ using AB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AB.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250812172405_SeedProducts")]
+    partial class SeedProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,15 +231,39 @@ namespace AB.Data.Migrations
                     b.HasData(
                         new
                         {
+                            Id = 1,
+                            Category = "Satin Bonnets",
+                            Colors = "Black, White, Pink, Teal, Navy",
+                            Description = "non-elastic",
+                            ImageUrl = "/images/bonnet-pink.jpeg",
+                            Name = "Satin Bonnet",
+                            Price = 200.00m,
+                            Sizes = "Medium,Large",
+                            prodQuantity = 50
+                        },
+                        new
+                        {
                             Id = 2,
-                            Category = "Bonnets",
+                            Category = "Satin Bonnets",
                             Colors = "Pink, Blue, Grey, Black, White, Pink",
                             Description = "elastic",
-                            ImageUrl = "elastic-champ.jpeg",
-                            Name = "Bonnet",
+                            ImageUrl = "/images/elastic-champ.jpeg",
+                            Name = "Satin Bonnet",
                             Price = 150.00m,
-                            Sizes = "S,M,L",
+                            Sizes = "Small,Medium",
                             prodQuantity = 35
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Category = "Satin Bonnets",
+                            Colors = "Teal, Navy",
+                            Description = "non-elastic",
+                            ImageUrl = "/images/bonnet-red.jpeg",
+                            Name = "Satin Bonnet",
+                            Price = 200.00m,
+                            Sizes = "Large",
+                            prodQuantity = 3
                         },
                         new
                         {
@@ -244,11 +271,23 @@ namespace AB.Data.Migrations
                             Category = "Scrunchies",
                             Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple",
                             Description = "oversized",
-                            ImageUrl = "scrunchie-pink.jpeg",
-                            Name = "Scrunchie",
+                            ImageUrl = "/images/scrunchie-pink.jpeg",
+                            Name = "Satin Scrunchie",
                             Price = 50.00m,
-                            Sizes = "M,L,XL",
+                            Sizes = "One Size",
                             prodQuantity = 6
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Category = "Scrunchies",
+                            Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple",
+                            Description = "one-size",
+                            ImageUrl = "/images/scrunchie-white.jpeg",
+                            Name = "Satin Scrunchie",
+                            Price = 50.00m,
+                            Sizes = "One Size",
+                            prodQuantity = 75
                         },
                         new
                         {
@@ -256,83 +295,47 @@ namespace AB.Data.Migrations
                             Category = "Scrunchies",
                             Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple",
                             Description = "fun size",
-                            ImageUrl = "scrunchie-red.jpeg",
-                            Name = "Scrunchie",
+                            ImageUrl = "/images/scrunchie-red.jpeg",
+                            Name = "Satin Scrunchie",
                             Price = 50.00m,
-                            Sizes = "M,L,XL",
+                            Sizes = "One Size",
                             prodQuantity = 90
                         },
                         new
                         {
                             Id = 7,
                             Category = "Pillowcases",
-                            Colors = "White,Champagne,Black",
+                            Colors = "White",
                             Description = "standard",
-                            ImageUrl = "pillowcase.jpeg",
-                            Name = "Pillowcase Set",
+                            ImageUrl = "/images/pillowcase.jpeg",
+                            Name = "Satin Pillowcase",
                             Price = 150.00m,
-                            Sizes = "Standard,Queen,King",
+                            Sizes = "Standard,King",
                             prodQuantity = 40
                         },
                         new
                         {
                             Id = 8,
                             Category = "Pillowcases",
-                            Colors = "White,Champagne,Black",
+                            Colors = "Champagne",
                             Description = "queen",
-                            ImageUrl = "pillowcase.jpeg",
-                            Name = "Pillowcase Set",
+                            ImageUrl = "/images/pillowcase.jpeg",
+                            Name = "Satin Pillowcase",
                             Price = 150.00m,
-                            Sizes = "Standard,Queen,King",
-                            prodQuantity = 0
+                            Sizes = "Standard",
+                            prodQuantity = 30
                         },
                         new
                         {
                             Id = 9,
                             Category = "Pillowcases",
-                            Colors = "White,Champagne,Black",
+                            Colors = "Black",
                             Description = "king",
-                            ImageUrl = "pillowcase.jpeg",
-                            Name = "Pillowcase Set",
+                            ImageUrl = "/images/pillowcase.jpeg",
+                            Name = "Satin Pillowcase",
                             Price = 150.00m,
-                            Sizes = "Standard,Queen,King",
-                            prodQuantity = 15
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Category = "Bonnets",
-                            Colors = "Black, White, Pink, Teal, Navy",
-                            Description = "non-elastic",
-                            ImageUrl = "bonnet-pink.jpeg",
-                            Name = "Bonnet",
-                            Price = 200.00m,
-                            Sizes = "S,M,L",
-                            prodQuantity = 50
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Category = "Scrunchies",
-                            Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple",
-                            Description = "one-size",
-                            ImageUrl = "scrunchie-white.jpeg",
-                            Name = "Scrunchie",
-                            Price = 50.00m,
-                            Sizes = "S,M,L",
-                            prodQuantity = 75
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Category = "Bonnets",
-                            Colors = "Teal, Navy",
-                            Description = "non-elastic",
-                            ImageUrl = "bonnet-red.jpeg",
-                            Name = "Bonnet",
-                            Price = 200.00m,
-                            Sizes = "S,M,L",
-                            prodQuantity = 3
+                            Sizes = "Standard,Queen",
+                            prodQuantity = 25
                         });
                 });
 
@@ -435,7 +438,7 @@ namespace AB.Data.Migrations
                         new
                         {
                             Id = 1,
-                            AccountName = "Sazi",
+                            AccountName = "John Doe",
                             AccountNumber = "123456789",
                             AccountType = "Savings",
                             BankName = "FakeBank SA",

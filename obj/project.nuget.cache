@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xC6NUhKLqNo=",
+  "dgSpecHash": "JRHClzCRDC8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\bbdnet3411\\Documents\\Business Ideas\\Website templates\\AB\\Afro-Belle-E-Commerce\\AB.csproj",
+  "projectFilePath": "C:\\Users\\bbdnet3411\\Documents\\Bsc CS\\Portfolio\\Afro-Belle-E-Commerce\\AB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bbdnet3411\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\bbdnet3411\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
@@ -179,9 +179,9 @@
       "code": "NU1701",
       "level": "Warning",
       "message": "Package 'PayPal 1.9.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\Users\\bbdnet3411\\Documents\\Business Ideas\\Website templates\\AB\\Afro-Belle-E-Commerce\\AB.csproj",
+      "projectPath": "C:\\Users\\bbdnet3411\\Documents\\Bsc CS\\Portfolio\\Afro-Belle-E-Commerce\\AB.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\bbdnet3411\\Documents\\Business Ideas\\Website templates\\AB\\Afro-Belle-E-Commerce\\AB.csproj",
+      "filePath": "C:\\Users\\bbdnet3411\\Documents\\Bsc CS\\Portfolio\\Afro-Belle-E-Commerce\\AB.csproj",
       "libraryId": "PayPal",
       "targetGraphs": [
         "net8.0"
