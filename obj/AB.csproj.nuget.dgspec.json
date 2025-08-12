@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bbdnet3411\\Documents\\Business Ideas\\Website templates\\AB\\Afro-Belle-E-Commerce\\AB.csproj": {}
+    "C:\\Users\\bbdnet3411\\Documents\\Bsc CS\\Portfolio\\Afro-Belle-E-Commerce\\AB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bbdnet3411\\Documents\\Business Ideas\\Website templates\\AB\\Afro-Belle-E-Commerce\\AB.csproj": {
+    "C:\\Users\\bbdnet3411\\Documents\\Bsc CS\\Portfolio\\Afro-Belle-E-Commerce\\AB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bbdnet3411\\Documents\\Business Ideas\\Website templates\\AB\\Afro-Belle-E-Commerce\\AB.csproj",
+        "projectUniqueName": "C:\\Users\\bbdnet3411\\Documents\\Bsc CS\\Portfolio\\Afro-Belle-E-Commerce\\AB.csproj",
         "projectName": "AB",
-        "projectPath": "C:\\Users\\bbdnet3411\\Documents\\Business Ideas\\Website templates\\AB\\Afro-Belle-E-Commerce\\AB.csproj",
+        "projectPath": "C:\\Users\\bbdnet3411\\Documents\\Bsc CS\\Portfolio\\Afro-Belle-E-Commerce\\AB.csproj",
         "packagesPath": "C:\\Users\\bbdnet3411\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bbdnet3411\\Documents\\Business Ideas\\Website templates\\AB\\Afro-Belle-E-Commerce\\obj\\",
+        "outputPath": "C:\\Users\\bbdnet3411\\Documents\\Bsc CS\\Portfolio\\Afro-Belle-E-Commerce\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

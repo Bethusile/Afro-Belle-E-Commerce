@@ -36,12 +36,33 @@ namespace AB.Data
             {
                 Id = 1,
                 BankName = "FakeBank SA",
-                AccountName = "John Doe",
+                AccountName = "Sazi",
                 AccountType = "Savings",
                 AccountNumber = "123456789",
                 BranchCode = "250655",
                 ReferenceInstructions = "Use your order ID as the payment reference."
             });
+
+            // Seed data for Products
+            modelBuilder.Entity<Product>().HasData(
+                // Satin Bonnets
+                new Product { Id = 2, Name = "Bonnet", Description = "elastic", ImageUrl = "elastic-champ.jpeg", Price = 150.00m, Sizes = "S,M,L", Colors = "Pink, Blue, Grey, Black, White, Pink", Category = "Bonnets", prodQuantity = 35 },
+
+                // Scrunchies
+                new Product { Id = 4, Name = "Scrunchie", Description = "oversized", ImageUrl = "scrunchie-pink.jpeg", Price = 50.00m, Sizes = "M,L,XL", Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple", Category = "Scrunchies", prodQuantity = 6 },
+                new Product { Id = 6, Name = "Scrunchie", Description = "fun size", ImageUrl = "scrunchie-red.jpeg", Price = 50.00m, Sizes = "M,L,XL", Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple", Category = "Scrunchies", prodQuantity = 90 },
+
+                // Pillowcases
+                new Product { Id = 7, Name = "Pillowcase Set", Description = "standard", ImageUrl = "pillowcase.jpeg", Price = 150.00m, Sizes = "Standard,Queen,King", Colors = "White,Champagne,Black", Category = "Pillowcases", prodQuantity = 40 },
+                new Product { Id = 8, Name = "Pillowcase Set", Description = "queen", ImageUrl = "pillowcase.jpeg", Price = 150.00m, Sizes = "Standard,Queen,King", Colors = "White,Champagne,Black", Category = "Pillowcases", prodQuantity = 0 },
+                new Product { Id = 9, Name = "Pillowcase Set", Description = "king", ImageUrl = "pillowcase.jpeg", Price = 150.00m, Sizes = "Standard,Queen,King", Colors = "White,Champagne,Black", Category = "Pillowcases", prodQuantity = 15 },
+
+                //New Arrivals
+                new Product { Id = 10, Name = "Bonnet", Description = "non-elastic", ImageUrl = "bonnet-pink.jpeg", Price = 200.00m, Sizes = "S,M,L", Colors = "Black, White, Pink, Teal, Navy", Category = "Bonnets", prodQuantity = 50 },
+                new Product { Id = 11, Name = "Scrunchie", Description = "one-size", ImageUrl = "scrunchie-white.jpeg", Price = 50.00m, Sizes = "S,M,L", Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple", Category = "Scrunchies", prodQuantity = 75 },
+                new Product { Id = 3, Name = "Bonnet", Description = "non-elastic", ImageUrl = "bonnet-red.jpeg", Price = 200.00m, Sizes = "S,M,L", Colors = "Teal, Navy", Category = "Bonnets", prodQuantity = 3 }
+
+            );
         }
     }
 }

@@ -4,6 +4,7 @@ using AB.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AB.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250812175740_imageUrl")]
+    partial class imageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,11 +231,23 @@ namespace AB.Data.Migrations
                     b.HasData(
                         new
                         {
+                            Id = 1,
+                            Category = "Bonnets",
+                            Colors = "Black, White, Pink, Teal, Navy",
+                            Description = "non-elastic",
+                            ImageUrl = "/images/bonnet-pink.jpeg",
+                            Name = "Bonnet",
+                            Price = 200.00m,
+                            Sizes = "S,M,L",
+                            prodQuantity = 50
+                        },
+                        new
+                        {
                             Id = 2,
                             Category = "Bonnets",
                             Colors = "Pink, Blue, Grey, Black, White, Pink",
                             Description = "elastic",
-                            ImageUrl = "elastic-champ.jpeg",
+                            ImageUrl = "/images/elastic-champ.jpeg",
                             Name = "Bonnet",
                             Price = 150.00m,
                             Sizes = "S,M,L",
@@ -240,11 +255,23 @@ namespace AB.Data.Migrations
                         },
                         new
                         {
+                            Id = 3,
+                            Category = "Bonnets",
+                            Colors = "Teal, Navy",
+                            Description = "non-elastic",
+                            ImageUrl = "/images/bonnet-red.jpeg",
+                            Name = "Bonnet",
+                            Price = 200.00m,
+                            Sizes = "S,M,L",
+                            prodQuantity = 3
+                        },
+                        new
+                        {
                             Id = 4,
                             Category = "Scrunchies",
                             Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple",
                             Description = "oversized",
-                            ImageUrl = "scrunchie-pink.jpeg",
+                            ImageUrl = "/images/scrunchie-pink.jpeg",
                             Name = "Scrunchie",
                             Price = 50.00m,
                             Sizes = "M,L,XL",
@@ -252,11 +279,23 @@ namespace AB.Data.Migrations
                         },
                         new
                         {
+                            Id = 5,
+                            Category = "Scrunchies",
+                            Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple",
+                            Description = "one-size",
+                            ImageUrl = "/images/scrunchie-white.jpeg",
+                            Name = "Scrunchie",
+                            Price = 50.00m,
+                            Sizes = "S,M,L",
+                            prodQuantity = 75
+                        },
+                        new
+                        {
                             Id = 6,
                             Category = "Scrunchies",
                             Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple",
                             Description = "fun size",
-                            ImageUrl = "scrunchie-red.jpeg",
+                            ImageUrl = "/images/scrunchie-red.jpeg",
                             Name = "Scrunchie",
                             Price = 50.00m,
                             Sizes = "M,L,XL",
@@ -268,7 +307,7 @@ namespace AB.Data.Migrations
                             Category = "Pillowcases",
                             Colors = "White,Champagne,Black",
                             Description = "standard",
-                            ImageUrl = "pillowcase.jpeg",
+                            ImageUrl = "/images/pillowcase.jpeg",
                             Name = "Pillowcase Set",
                             Price = 150.00m,
                             Sizes = "Standard,Queen,King",
@@ -280,11 +319,11 @@ namespace AB.Data.Migrations
                             Category = "Pillowcases",
                             Colors = "White,Champagne,Black",
                             Description = "queen",
-                            ImageUrl = "pillowcase.jpeg",
+                            ImageUrl = "/images/pillowcase.jpeg",
                             Name = "Pillowcase Set",
                             Price = 150.00m,
                             Sizes = "Standard,Queen,King",
-                            prodQuantity = 0
+                            prodQuantity = 30
                         },
                         new
                         {
@@ -292,11 +331,11 @@ namespace AB.Data.Migrations
                             Category = "Pillowcases",
                             Colors = "White,Champagne,Black",
                             Description = "king",
-                            ImageUrl = "pillowcase.jpeg",
+                            ImageUrl = "/images/pillowcase.jpeg",
                             Name = "Pillowcase Set",
                             Price = 150.00m,
                             Sizes = "Standard,Queen,King",
-                            prodQuantity = 15
+                            prodQuantity = 0
                         },
                         new
                         {
@@ -304,7 +343,7 @@ namespace AB.Data.Migrations
                             Category = "Bonnets",
                             Colors = "Black, White, Pink, Teal, Navy",
                             Description = "non-elastic",
-                            ImageUrl = "bonnet-pink.jpeg",
+                            ImageUrl = "/images/bonnet-pink.jpeg",
                             Name = "Bonnet",
                             Price = 200.00m,
                             Sizes = "S,M,L",
@@ -316,23 +355,11 @@ namespace AB.Data.Migrations
                             Category = "Scrunchies",
                             Colors = "Gold,Rose,Silver, White, Blue,Pink,Purple",
                             Description = "one-size",
-                            ImageUrl = "scrunchie-white.jpeg",
+                            ImageUrl = "/images/scrunchie-white.jpeg",
                             Name = "Scrunchie",
                             Price = 50.00m,
                             Sizes = "S,M,L",
                             prodQuantity = 75
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Category = "Bonnets",
-                            Colors = "Teal, Navy",
-                            Description = "non-elastic",
-                            ImageUrl = "bonnet-red.jpeg",
-                            Name = "Bonnet",
-                            Price = 200.00m,
-                            Sizes = "S,M,L",
-                            prodQuantity = 3
                         });
                 });
 

@@ -1,78 +1,108 @@
 ﻿@model IEnumerable<AB.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products Dashboard";
 }
 
-<h1>Index</h1>
+<div class="container-fluid mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-4 fw-bold text-primary">
+            <i class="fas fa-box-open me-2"></i> Product Inventory
+        </h1>
+        <a asp-action="Create" class="btn btn-primary d-flex align-items-center">
+            <i class="fas fa-plus-circle me-2"></i> Create New
+        </a>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sizes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Colors)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.prodQuantity)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sizes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Colors)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.prodQuantity)
-            </td>
+    <table class="table table-hover table-striped table-bordered text-center align-middle">
+        <thead class="bg-primary text-white">
+            <tr>
+                <th>
+                    <i class="fas fa-image me-1"></i> Image
+                </th>
+                <th class="text-start">
+                    <i class="fas fa-tag me-1"></i> @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th class="text-start">
+                    <i class="fas fa-file-alt me-1"></i> @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    <i class="fas fa-money-bill-wave me-1"></i> @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    <i class="fas fa-ruler-horizontal me-1"></i> @Html.DisplayNameFor(model => model.Sizes)
+                </th>
+                <th>
+                    <i class="fas fa-palette me-1"></i> @Html.DisplayNameFor(model => model.Colors)
+                </th>
+                <th>
+                    <i class="fas fa-th-large me-1"></i> @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    <i class="fas fa-boxes me-1"></i> @Html.DisplayNameFor(model => model.prodQuantity)
+                </th>
+                <th>
+                    <i class="fas fa-cogs me-1"></i> Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @{
+                            // Prepend the "/images/" path to the ImageUrl
+                            var fullImageUrl = "/images/" + item.ImageUrl;
+                        }
+                        <img src="@fullImageUrl" alt="@item.Name" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;" />
+                    </td>
+                    <td class="text-start">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="text-start">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <span class="badge bg-success">@string.Format("R{0:N2}", item.Price)</span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sizes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Colors)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prodQuantity)
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-around">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="text-primary me-2" data-bs-toggle="tooltip" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="text-info me-2" data-bs-toggle="tooltip" title="Details">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger" data-bs-toggle="tooltip" title="Delete">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+@section Scripts {
+    <script>
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
 }
-    </tbody>
-</table>
